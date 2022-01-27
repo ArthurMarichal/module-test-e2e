@@ -5,35 +5,35 @@ describe("Checkout process", () => {
     let page;
 
     test('checkout', async () => {
-        await page.goto(process.env.TESTED_WEBSITE);
+        await page.goto("https://www.saucedemo.com/");
         await page.waitForSelector('body');
-        await page.type('#user-name', process.env.TEST_LOGIN);
-        await page.type('#password', process.env.TEST_PASSWORD);
+        await page.type('#user-name', "standard_user");
+        await page.type('#password', "secret_sauce");
         await page.click('#login-button');
         //add product to cart
         await page.click('#add-to-cart-sauce-labs-backpack')
-        await page.goto(process.env.ADDED_TO_CART);
+        await page.goto("https://www.saucedemo.com/cart.html");
         await page.waitForSelector('body');
         let html = await page.$eval('#root', e => e.innerHTML)
         expect(html).toContain('div class="cart_item"')
         //Do the checkout
         await page.click('#checkout');
-        await page.goto(process.env.CHECKOUT_PROCESS_ONE);
+        await page.goto("https://www.saucedemo.com/checkout-step-one.html");
         await page.waitForSelector('body');
         html = await page.$eval('#root', e => e.innerHTML)
         await page.screenshot({path: './tests/img/checkout_first.png'});
         expect(html).toContain('div class="checkout_info"')
-        await page.type('#first-name', process.env.FIRST_NAME);
-        await page.type('#last-name', process.env.LAST_NAME);
-        await page.type('#postal-code', process.env.POSTAL_CODE);
+        await page.type('#first-name', "Arthur");
+        await page.type('#last-name', "Marichal");
+        await page.type('#postal-code', "0123456789");
         await page.click('#continue');
-        await page.goto(process.env.CHECKOUT_PROCESS_TWO);
+        await page.goto("https://www.saucedemo.com/checkout-step-two.html");
         await page.waitForSelector('body');
         html = await page.$eval('#root', e => e.innerHTML)
         await page.screenshot({path: './tests/img/checkout_two.png'});
         expect(html).toContain('div class="summary_info"')
         await page.click('#finish');
-        await page.goto(process.env.CHECKOUT_COMPLETE);
+        await page.goto("https://www.saucedemo.com/checkout-complete.html");
         await page.waitForSelector('body');
         html = await page.$eval('#root', e => e.innerHTML)
         await page.screenshot({path: './tests/img/checkout_complete.png'});

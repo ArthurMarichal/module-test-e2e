@@ -5,10 +5,10 @@ describe("Auth features", () => {
     let page;
 
     test('login and logout', async () => {
-        await page.goto(process.env.TESTED_WEBSITE);
+        await page.goto("https://www.saucedemo.com/");
         await page.waitForSelector('body');
-        await page.type('#user-name', process.env.TEST_LOGIN);
-        await page.type('#password', process.env.TEST_PASSWORD);
+        await page.type('#user-name', "standard_user");
+        await page.type('#password', "secret_sauce");
         await page.click('#login-button');
         //user is connected and try to logout
         let html = await page.$eval('#root', e => e.innerHTML);

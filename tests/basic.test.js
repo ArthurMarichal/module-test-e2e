@@ -7,14 +7,14 @@ describe("Tests basiques", () => {
     // vérification du chargement de la page de connexion
     test('login screen access', async () => {
         // charger la page de connexion
-        await page.goto(process.env.TESTED_WEBSITE);
+        await page.goto("https://www.saucedemo.com/");
         // attendre que l'élément <body> soit chargé
         await page.waitForSelector('body');
         // récupérer le contenu de l'élément <body>
         const html = await page.$eval('body', e => e.innerHTML);
         // vérifier que dans cet élément Body on trouve "Polr du campus"
         await page.screenshot({path: './tests/img/login_screen.png'});
-        expect(html).toContain(process.env.TEST_LOGIN)
+        expect(html).toContain("secret_sauce")
     }, timeout);
 
     // cette fonction est lancée avant chaque test de cette série de tests
