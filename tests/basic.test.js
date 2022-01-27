@@ -14,7 +14,7 @@ describe("Tests basiques", () => {
         const html = await page.$eval('body', e => e.innerHTML);
         // vérifier que dans cet élément Body on trouve "Polr du campus"
         await page.screenshot({path: './tests/img/login_screen.png'});
-        expect(html).toContain("some_login_label")
+        expect(html).toContain(process.env.TEST_LOGIN)
     }, timeout);
 
     // cette fonction est lancée avant chaque test de cette série de tests
@@ -22,5 +22,4 @@ describe("Tests basiques", () => {
         // ouvrir un onglet dans le navigateur
         page = await global.__BROWSER__.newPage()
     }, timeout)
-
 });
