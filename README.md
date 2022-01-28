@@ -2,8 +2,7 @@ Tests avec puppeteer
 ====================
 
 Based on original work https://github.com/le-campus-numerique/module-test-puppeteer by Philippe Le Van
-
-[![Build Status](https://travis-ci.org/campus-digital-grenoble/module-test-puppeteer.svg?branch=master)](https://travis-ci.org/campus-digital-grenoble/module-test-puppeteer)
+[![Node.js CI](https://github.com/ArthurMarichal/module-test-e2e/actions/workflows/node.js.yml/badge.svg)](https://github.com/ArthurMarichal/module-test-e2e/actions/workflows/node.js.yml)
 
 Démarrage
 -----------
